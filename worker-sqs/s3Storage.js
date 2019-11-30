@@ -47,7 +47,7 @@ module.exports.saveFileToS3 = (code, file, success) => {
 }
 
 updateUrlReport = (code,url_report)=>{
-  let update = `UPDATE hangover.EXECUTION_TESTS SET url_report="${url_report}" WHERE code="${code}"`;
+  let update = `UPDATE hangover.EXECUTION_TESTS SET url_report="${url_report}", status="1" WHERE code="${code}"`;
   console.log("report->"+update);
   db.query(update, (err, result) => {
       if (err) throw error;

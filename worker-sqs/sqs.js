@@ -16,7 +16,7 @@ module.exports.getSqs = function(req,success,error){
         'All'
       ],
       QueueUrl: sqsUrl,
-      VisibilityTimeout: 40,
+      VisibilityTimeout: 120,
       WaitTimeSeconds: 20
     };
 
@@ -51,7 +51,7 @@ module.exports.getSqs = function(req,success,error){
   }
 
   updateBD = (code)=>{
-    let update = `UPDATE hangover.EXECUTION_TESTS SET status=1 WHERE code=${code}`;
+    let update = `UPDATE hangover.EXECUTION_TESTS SET status=1 WHERE code="${code}"`;
     console.log(update);
     db.query(update, (err, result) => {
         if (err) throw error;
